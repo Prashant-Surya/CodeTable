@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Editor</title>
+  <style type="text/css" media="screen">
+    body {
+      height:1000px;
+     /*   overflow: hidden;*/
+    }
+
+    #editor {
+        margin: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;  
+        right: 0;
+        margin-left: 100px;
+        margin-top: 150px;
+        margin-bottom: 50px;
+        margin-right:150px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="editor">
+  <p>{{ abc }}</p>
+</div>
+
+<script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/twilight");
+    editor.session.setMode("ace/mode/javascript");
+    editor.getSession().setUseWorker(false);
+</script>
+
+</body>
+</html>
