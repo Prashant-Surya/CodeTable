@@ -17,7 +17,7 @@ def home(request):
             print("Valid")
             data = form.data['text']
             RUN_URL = u'https://api.hackerearth.com/v3/code/run/'
-            secret = "2a14a05d9c4e68f793ed8749117cb63b28dcb016"
+            secret = "651ddcb7e412840387cb11c96737589d8c2b38b9"
             stdin = form.data['inp']
             lang = form.cleaned_data['langs']
             #lang = dict(form.fields['langs'].choices)[ll]
@@ -62,7 +62,7 @@ def display(request,hash):
     source = obj.code
     lang = obj.lang
     RUN_URL = u'https://api.hackerearth.com/v3/code/run/'
-    secret = "2a14a05d9c4e68f793ed8749117cb63b28dcb016"    
+    secret = "651ddcb7e412840387cb11c96737589d8c2b38b9"    
     code_data = {}
     if 'data' in request.session:
         data_pass = request.session['data']
@@ -72,7 +72,7 @@ def display(request,hash):
         code_data['status_detail'] = data_pass['sd']
         code_data['status']=data_pass['s']
         dict_data = {}
-        dict_data['inp']=request.session['i']
+        dict_data['inp']=data_pass['i']
         dict_data['text']=source
         dict_data['langs']=lang
         form = CodeForm(initial = dict_data)
