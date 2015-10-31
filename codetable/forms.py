@@ -8,4 +8,4 @@ class CodeForm(forms.Form):
 	('HTML', 'HTML'), ('GO', 'Go'), ('JAVA', 'Java'), ('JAVASCRIPT', 'Javascript(Rhino)'),
 	 ('JAVASCRIPT_NODE', 'Javascript(Node.js)'), ('HASKELL', 'Haskell'), ('PERL', 'Perl'), 
 	 ('PHP', 'PHP'), ('PYTHON', 'Python'), ('RUBY', 'Ruby'), ('RUST', 'Rust')]
-	langs = forms.ChoiceField(l,initial='C')	
+	langs = forms.ChoiceField(l,initial='C')

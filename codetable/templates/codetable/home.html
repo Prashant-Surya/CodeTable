@@ -1,10 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head><title>Index</title>
+
 <style>
-body{
+html, body, div{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.post_form{
 	margin-left: 100px;
-	margin-top: 100px;
+	margin-top: 30px;
 }
 label{
 	color:white;
@@ -13,22 +45,37 @@ label{
 	margin-bottom: 15px;
 }
 #code{
-	height:5	5em;
-	width:50em;
+	height:35em;
+	width:30em;
 }
-/*#output{
-	margin-left: 53px;
-}*/
+#header{
+	font-size: 10px;
+	padding: 5px 5px 5px 5px;
+	margin: 0px 0px 0px 0px;
+	/*height: 30px;*/
+	color: white;
+	background-color: #003399;
+	width:100%;
+    /*position:fixed;*/
+    top:0px;
+}
+#name {
+	padding-left: 40px;
+}
+body{
+	padding-bottom: 100px;
+}
 </style>
 </head>
 <body>
+<div id="header">
+	<h1 id="name">Code Table</h1>
+</div>
 <form method="post" class="post_form">{% csrf_token %}
       {{ form.langs }}<button id="cnr" type="submit" class="btn btn-default">Compile and Run</button><br/>
       {{ form.text }}</br><br/>
-      <p>Input:</p>
+      <pre>Input:</pre>
       {{ form.inp }}
-      <p>Output:</p>
-      {{ out }}
     </form>
 </body>
 </html>

@@ -2,9 +2,36 @@
 <html>
 <head><title>Index</title>
 <style>
-body{
-	margin-left: 100px;
-	margin-top: 100px;
+html, body, div{
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+      display: block;
+}
+body {
+      line-height: 1;
+}
+ol, ul {
+      list-style: none;
+}
+blockquote, q {
+      quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+      content: '';
+      content: none;
+}
+table {
+      border-collapse: collapse;
+      border-spacing: 0;
 }
 label{
 	color:white;
@@ -13,22 +40,91 @@ label{
 	margin-bottom: 15px;
 }
 #code{
-	height:5	5em;
-	width:50em;
+	height:40em;
+	width:45em;
+}
+#input{
+	width:30em;
+	height: 10em;
+}
+.thead{
+	padding-right: 85px;
+}
+table{
+	font-size:15px;
+}
+table tr{
+      padding-top: 5px;
+}
+textarea:disabled{
+	background-color: white;
+	border: none;
 }
 /*#output{
 	margin-left: 53px;
 }*/
+pre{
+      padding-left: 5px;
+}
+#red{
+      width:75%;
+      background-color: #E67676;
+      padding-bottom: 5px;
+}
+#header{
+      font-size: 10px;
+      padding: 5px 5px 5px 5px;
+      margin: 0px 0px 0px 0px;
+      /*height: 30px;*/
+      color: white;
+      background-color: #003399;
+      width:100%;
+    /*position:fixed;*/
+    top:0px;
+}
+.post_form{
+      margin-left: 100px;
+      margin-top: 30px;
+}
 </style>
 </head>
 <body>
+<div id="header">
+      <h1 id="name">Code Table</h1>
+</div>
 <form method="post" class="post_form">{% csrf_token %}
       {{ form.langs }}<button id="cnr" type="submit" class="btn btn-default">Compile and Run</button><br/>
       {{ form.text }}</br><br/>
-      <p>Input:</p>
-      {{ form.inp }}
-      <p>Output:</p>
-      {{ out }}
+      <pre>INPUT:</pre>
+      {{ form.inp }}	
+      <br/>
+      </br>
+      {% if out.status == "CE" %}
+      <pre>COMPILATION LOG:</pre>
+      <div id ="red"><pre><br/>{{ out.output|safe }}</pre></div>  
+      {% else %}
+      <pre>OUTPUT:</pre>
+      <pre>{{ out.output|safe }}</pre>
+      {% endif %}
+      <hr/>
+      
+      {% if method == 1 %}
+      <table>
+      <tr>
+      	<th class="thead">Time</th>
+      	<th class="thead">Memory</th>
+      	<th class="thead">Status</th>
+      	<th class="thead">Status Detail</th>
+      </tr>
+      <tr>
+      	<td class="thead">{{ out.time }}</td>
+      	<td class="thead">{{ out.memory }}</td>
+      	<td class="thead">{{ out.status }}</td>
+      	<td class="thead">{{ out.status_detail }}</td>
+
+      </tr>
+      </table>
+      {% endif %}
     </form>
 </body>
 </html>
