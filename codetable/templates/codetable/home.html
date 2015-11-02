@@ -8,6 +8,8 @@ html, body, div{
 	padding: 0;
 	border: 0;
 	font-size: 100%;
+	
+	overflow: hidden;
 	font: inherit;
 	vertical-align: baseline;
 }
@@ -64,18 +66,44 @@ label{
 }
 body{
 	padding-bottom: 100px;
+	
+} 
+#editor {
+        margin: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;  
+        right: 0;
+        margin-left: 100px;
+        margin-top: 150px;
+        margin-bottom: 150px;
+        margin-right:150px;
+    }
+#inpdiv{
+	margin-top: 400px;
+}
+#run_count{
+	margin-top: 150px;
+	position: absolute;
+	margin-left: 1100px;
 }
 </style>
+{% load staticfiles %}
 </head>
 <body>
 <div id="header">
 	<h1 id="name">Code Table</h1>
 </div>
+<div id="run_count">
+      <bold> Hello</bold>
+</div>
 <form method="post" class="post_form">{% csrf_token %}
       {{ form.langs }}<button id="cnr" type="submit" class="btn btn-default">Compile and Run</button><br/>
-      {{ form.text }}</br><br/>
+       {{ form.text }}</br><br/>
       <pre>Input:</pre>
       {{ form.inp }}
-    </form>
+</form>
+
 </body>
 </html>

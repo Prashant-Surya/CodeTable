@@ -34,6 +34,7 @@ def home(request):
             obj = Code()
             obj.code = data
             obj.lang = lang
+            obj.url_count += 1
             obj.hash = str(r1['code_id'])
             hash = str(r1['code_id'])
             obj.publish()
@@ -61,6 +62,7 @@ def display(request,hash):
     obj = get_object_or_404(Code,hash=hash)
     source = obj.code
     lang = obj.lang
+    count = obj.get_count()
     RUN_URL = u'https://api.hackerearth.com/v3/code/run/'
     secret = "651ddcb7e412840387cb11c96737589d8c2b38b9"    
     code_data = {}
@@ -102,6 +104,7 @@ def display(request,hash):
             #print(type(output))
             obj.code = source
             obj.lang = lang
+            count = obj.increment()
             obj.publish()
             code_data = {}
             code_data['status']= r1['run_status']['status']
@@ -131,4 +134,5 @@ def display(request,hash):
         dict_data['text'] = source
         dict_data['langs'] = lang
         form = CodeForm(initial=dict_data)
-    return render(request,'codetable/display.html',{'form':form,'out':code_data,'method':method })
+
+    return render(request,'codetable/display.html',{'form':form,'out':code_data,'method':method,'count':count })

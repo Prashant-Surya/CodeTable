@@ -86,15 +86,30 @@ pre{
       margin-left: 100px;
       margin-top: 30px;
 }
+table{
+      border-collapse:separate;
+      border-spacing:0 5px;
+}
+#run_count{
+      margin-top: 50px;
+      position: absolute;
+      margin-left: 850px;
+}
 </style>
+
 </head>
 <body>
 <div id="header">
       <h1 id="name">Code Table</h1>
 </div>
 <form method="post" class="post_form">{% csrf_token %}
+      <div id="run_count">
+            <b>Activity Status:</b></br>
+            <p> Run Count: {{ count }} </p>
+      </div>
       {{ form.langs }}<button id="cnr" type="submit" class="btn btn-default">Compile and Run</button><br/>
       {{ form.text }}</br><br/>
+      
       <pre>INPUT:</pre>
       {{ form.inp }}	
       <br/>
@@ -107,7 +122,6 @@ pre{
       <pre>{{ out.output|safe }}</pre>
       {% endif %}
       <hr/>
-      
       {% if method == 1 %}
       <table>
       <tr>
