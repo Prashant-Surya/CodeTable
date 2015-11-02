@@ -95,9 +95,6 @@ body{
 <div id="header">
 	<h1 id="name">Code Table</h1>
 </div>
-<div id="run_count">
-      <bold> Hello</bold>
-</div>
 <form method="post" class="post_form">{% csrf_token %}
       {{ form.langs }}<button id="cnr" type="submit" class="btn btn-default">Compile and Run</button><br/>
        {{ form.text }}</br><br/>
